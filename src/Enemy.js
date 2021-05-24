@@ -6,7 +6,7 @@ function Enemy (left, direction) {
   this.left = left
   this.direction = direction
   this.html = 0
-  this.id = ''
+  this.id = -1
   this.alive = true
 
   // Función que crea un nuevo enemigo y lo añade al DOM
@@ -14,7 +14,7 @@ function Enemy (left, direction) {
     let canvas = document.getElementById('canvas')
     let enemy = document.createElement('div')
     enemy.classList.add('enemy')
-    this.id = `${length}`
+    this.id = length
     enemy.setAttribute('id', this.id)
     enemy.style.left = this.left
     canvas.appendChild(enemy)

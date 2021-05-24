@@ -34,20 +34,15 @@ function killEnemy (e) {
   e.stopPropagation()
   // Enemigo al que hacemos click es eliminado
   e.currentTarget.parentNode.removeChild(e.currentTarget)
-  // Delete enemy from enemies array
+  // Eliminar del array sólo el elemento su id correcta
   let enemyIndex = e.currentTarget.getAttribute('id')
   enemies.splice(enemyIndex, 1)
-
-  // Eliminar del array sólo el elemento su id correcta
-  //console.log('AAAAAA', e.currentTarget.alive)
-
-  // Para el setInterval
-  //clearInterval(timerId)
 }
 
 // Movimiento de enemigos
 function moveEnemies () {
-  // console.log(enemies)
+  // 
+  console.log(enemies)
   enemies.forEach(function (enemy, index) {
     if (enemy.alive) enemy.move()
     if (enemy.left > 1000 || enemy.left < -200) {
