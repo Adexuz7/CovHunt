@@ -3,6 +3,7 @@
   background-color: black;
   width: 800px;
   height: 600px;
+  margin: 0 auto;
 }
 
 .enemy {
@@ -12,9 +13,3 @@
   height: 150px;
 }
 
-.enemy-2 {
-  position: absolute;
-  background-color: yellow;
-  width: 150px;
-  height: 150px;
-}
