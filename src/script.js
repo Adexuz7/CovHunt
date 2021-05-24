@@ -18,27 +18,19 @@ let enemy2 = document.getElementsByClassName('enemy-2')[0]
 console.log(document.getElementById('canvas'))
 console.log(document.getElementsByClassName('enemy')[0])
 
-
+document.getElementById('canvas').addEventListener('click', function () {
+  console.log('canvas')
+})
 
 // DETECTA Y ELIMINA AL ENEMIGO
-
-document.getElementById('canvas').addEventListener('click',function(){
-console.log('canvas')
-})
-document.getElementsByClassName('enemy')[0].addEventListener('click', 
-function (e) {
- e.stopPropagation()
-  enemy.parentNode.removeChild(enemy);
-  console.log('enemy') })
-
-
-
-
-let killEnemy = function (e) {
+function killEnemy (e) {
   e.stopPropagation()
-  enemy.parentNode.removeChild(enemy);
+  e.currentTarget.parentNode.removeChild(e.currentTarget)
   console.log('enemy')
 }
+
+enemy.addEventListener('click', killEnemy)
+enemy2.addEventListener('click', killEnemy)
 
   // MOVEMENT
 
