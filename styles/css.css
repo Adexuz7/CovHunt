@@ -1,0 +1,20 @@
+#canvas {
+  position: relative;
+  background-color: black;
+  width: 800px;
+  height: 600px;
+}
+
+.enemy {
+  position: absolute;
+  background-color: aqua;
+  width: 150px;
+  height: 150px;
+}
+
+.enemy-2 {
+  position: absolute;
+  background-color: yellow;
+  width: 150px;
+  height: 150px;
+}
