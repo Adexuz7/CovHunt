@@ -10,14 +10,15 @@ function Enemy (left, direction) {
   this.alive = true
 
   // Función que crea un nuevo enemigo y lo añade al DOM
-  this.create = function (length) {
+  this.create = function (lastId) {
     let canvas = document.getElementById('canvas')
     let enemy = document.createElement('div')
     enemy.classList.add('enemy')
-    self.id = length
+    self.id = parseInt(lastId) + 1
     enemy.setAttribute('id', self.id)
-    enemy.style.left = self.left
+    enemy.style.left = self.left + 'px'
     canvas.appendChild(enemy)
+    self.html = document.getElementById(self.id)
   }
 
   this.move = function () {

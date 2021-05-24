@@ -1,5 +1,7 @@
 // Creamos una array vacía para almacenar a los enemigos
-var enemies = []
+let enemies = []
+let gameId
+let enemiesId
 
 // Comprobamos que el click funciona en el canvas
 document.getElementById('canvas').addEventListener('click', function () {
@@ -8,8 +10,8 @@ document.getElementById('canvas').addEventListener('click', function () {
 
 // Creamos enemigo en diferentes direcciones
 function createEnemy () {
-  var direction = 0
-  var position = 0
+  let direction = 0
+  let position = 0
 
   if (Math.random() > 0.5) {
     direction = 1
@@ -20,65 +22,60 @@ function createEnemy () {
   }
 
   // Llamamos al objeto Enemy y creamos uno nuevo
-  var enemy = new Enemy(position, direction)
-  enemy.create(enemies.length)
-  enemy.html = document.getElementById(enemies.length)
+  let enemy = new Enemy(position, direction)
+  if (enemies.length === 0) {
+    enemy.create(-1)
+  } else {
+    enemy.create(enemies[enemies.length-1].html.getAttribute('id'))
+  }
   // Evento click saca a enemigo
   enemy.html.addEventListener('click', killEnemy)
   enemies.push(enemy)
 }
 
-// 
+//
 function killEnemy (e) {
   // Esta línea mágica hace que al hacer click solo se seleccione el primer elemento
   e.stopPropagation()
-  // Enemigo al que hacemos click es eliminado
-  e.currentTarget.parentNode.removeChild(e.currentTarget)
   // Eliminar del array sólo el elemento su id correcta
-  let enemyIndex = e.currentTarget.getAttribute('id')
-  enemies.splice(enemyIndex, 1)
-}
-
-// Movimiento de enemigos
-function moveEnemies () {
-  var arrRemove = []
-
-  enemies.forEach(function (enemy, index) {
-    if (enemy.alive) enemy.move()
-    if (enemy.left > 1000 || enemy.left < -200) {
-      enemy.alive = false
-      arrRemove.push(index)
-    }
-  })
-
-  for (var i=0; i < arrRemove.length; i++) {
-    enemies[i].die()
-    console.log(enemies[i].alive)
-    enemies.splice(i, 1)
-
-    for (var j=0; j < arrRemove.length; j++) {
-      arrRemove[j] = arrRemove[j]--
+  let enemyIndex = parseInt(e.currentTarget.getAttribute('id'))
+  for (let i = 0; i < enemies.length; i++) {
+    if (enemies[i].id === enemyIndex) {
+      enemies[i].alive = false
     }
   }
 }
 
-// MOVEMENT
-gameId = setInterval(createEnemy, 2000)
-timerId = setInterval(moveEnemies, 50)
+// Movimiento de enemigos
+function moveEnemies () {
+  enemies.forEach(function (enemy, index) {
+    if (enemy.alive) {
+      enemy.move()
+    }
+  })
+}
 
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
-// createEnemy()
+function clearEnemies () {
+  for (let i = 0; i < enemies.length; i++) {
+    if (enemies[i].left > 1000 && enemies[i].direction === 1 ||
+      enemies[i].left < -200 && enemies[i].direction === -1 ||
+      !enemies[i].alive) {
+      enemies[i].html.parentNode.removeChild(enemies[i].html)
+      enemies.splice(i, 1)
+      i--
+    }
+  }
+}
 
+// GAME LOOP
+function animate () {
+  moveEnemies()
+  clearEnemies()
+}
+
+function startGame () {
+  gameId = setInterval(animate, 50)
+  enemiesId = setInterval(createEnemy, 2000)
+}
+
+startGame()
