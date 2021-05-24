@@ -1,6 +1,8 @@
 // Creamos un objeto con la plantilla base de Enemy
 function Enemy (left, direction) {
   var self = this
+
+  // Properties (propiedades)
   this.left = left
   this.direction = direction
   this.html = 0
