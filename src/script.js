@@ -3,6 +3,10 @@ let enemies = []
 let gameId
 let enemiesId
 
+// Punto de inicio y márgenes de los enemigos
+let leftSpawn = -100
+let rightSpawn = 800
+
 // Comprobamos que el click funciona en el canvas
 document.getElementById('canvas').addEventListener('click', function () {
   console.log('canvas')
@@ -15,10 +19,10 @@ function createEnemy () {
 
   if (Math.random() > 0.5) {
     direction = 1
-    position = -200
+    position = leftSpawn
   } else {
     direction = -1
-    position = 1000
+    position = rightSpawn
   }
 
   // Llamamos al objeto Enemy y creamos uno nuevo
@@ -57,8 +61,8 @@ function moveEnemies () {
 
 function clearEnemies () {
   for (let i = 0; i < enemies.length; i++) {
-    if (enemies[i].left > 1000 && enemies[i].direction === 1 ||
-      enemies[i].left < -200 && enemies[i].direction === -1 ||
+    if (enemies[i].left > rightSpawn && enemies[i].direction === 1 ||
+      enemies[i].left < leftSpawn && enemies[i].direction === -1 ||
       !enemies[i].alive) {
       enemies[i].html.parentNode.removeChild(enemies[i].html)
       enemies.splice(i, 1)

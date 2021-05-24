@@ -1,6 +1,9 @@
 #canvas {
   position: relative;
   background-color: black;
+  background-image: url('../assets/teide.jpg');
+  border: 5px solid black;
+  border-radius: 1%;
   width: 800px;
   height: 600px;
   margin: 0 auto;
@@ -9,6 +12,8 @@
 .enemy {
   position: absolute;
   background-color: aqua;
-  width: 150px;
-  height: 150px;
+  background-image: url('../assets/happy.jpg');
+  border-radius: 5%;
+  width: 100px;
+  height: 100px;
 }
