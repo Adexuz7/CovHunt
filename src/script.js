@@ -41,23 +41,44 @@ function killEnemy (e) {
 
 // Movimiento de enemigos
 function moveEnemies () {
-  // 
-  console.log(enemies)
+  var arrRemove = []
+
   enemies.forEach(function (enemy, index) {
     if (enemy.alive) enemy.move()
     if (enemy.left > 1000 || enemy.left < -200) {
-      // enemy.alive = false
-      enemy.die()
-      enemies.splice(index, 1)
+      enemy.alive = false
+      arrRemove.push(index)
     }
   })
+
+  for (var i=0; i < arrRemove.length; i++) {
+    enemies[i].die()
+    console.log(enemies[i].alive)
+    enemies.splice(i, 1)
+
+    for (var j=0; j < arrRemove.length; j++) {
+      arrRemove[j] = arrRemove[j]--
+    }
+  }
 }
 
 // MOVEMENT
+gameId = setInterval(createEnemy, 2000)
 timerId = setInterval(moveEnemies, 50)
 
-//gameId = setInterval(createEnemy, 2000)
-createEnemy()
-createEnemy()
-createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
+// createEnemy()
 
