@@ -1,10 +1,13 @@
+// Creamos un objeto con la plantilla base de Enemy
 function Enemy (left, direction) {
   var self = this
   this.left = left
   this.direction = direction
   this.html = 0
   this.id = ''
-  
+  this.alive = true
+
+  // Función que crea un nuevo enemigo y lo añade al DOM
   this.create = function (length) {
     let canvas = document.getElementById('canvas')
     let enemy = document.createElement('div')
