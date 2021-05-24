@@ -14,7 +14,7 @@ function Enemy (left, direction) {
     let canvas = document.getElementById('canvas')
     let enemy = document.createElement('div')
     enemy.classList.add('enemy')
-    this.id = `enemy${length}`
+    this.id = `${length}`
     enemy.setAttribute('id', this.id)
     enemy.style.left = this.left
     canvas.appendChild(enemy)
