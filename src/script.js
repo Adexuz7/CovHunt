@@ -14,10 +14,14 @@ document.getElementById('canvas').addEventListener('click', function () {
 
 // Creamos enemigo en diferentes direcciones
 function createEnemy () {
+  let random = Math.random()
+
   let direction = 0
   let position = 0
 
-  if (Math.random() > 0.5) {
+  let enemyHeight = 0
+
+  if (random > 0.5) {
     direction = 1
     position = leftSpawn
   } else {
@@ -25,8 +29,10 @@ function createEnemy () {
     position = rightSpawn
   }
 
+  enemyHeight = random * 400 + 50
+
   // Llamamos al objeto Enemy y creamos uno nuevo
-  let enemy = new Enemy(position, direction)
+  let enemy = new Enemy(position, direction, enemyHeight)
   if (enemies.length === 0) {
     enemy.create(-1)
   } else {
