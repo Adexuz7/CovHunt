@@ -1,18 +1,19 @@
 #canvas {
   position: relative;
   background-color: black;
-  background-image: url('../assets/teide.jpg');
+  background-image: url('../assets/laboratory.jpg');
   border: 5px solid black;
   border-radius: 1%;
   width: 800px;
   height: 600px;
   margin: 0 auto;
+  cursor: url('../assets/cursor.png'), auto;
 }
 
 .enemy {
   position: absolute;
-  background-color: aqua;
-  background-image: url('../assets/happy.jpg');
+  /*background-color: aqua;*/
+  background-image: url('../assets/corona.png');
   border-radius: 5%;
   width: 100px;
   height: 100px;
