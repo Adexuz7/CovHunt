@@ -30,7 +30,7 @@ function createEnemy () {
   }
 
   height = random * 400 + 50
-  speed = random * 30 + 10
+  speed = random * 10 + 10
 
   // Llamamos al objeto Enemy y creamos uno nuevo
   let enemy = new Enemy(position, direction, height, speed)
