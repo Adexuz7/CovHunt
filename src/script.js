@@ -113,7 +113,10 @@ function updateScore () {
 }
 
 function checkLives () {
-  if (lives <= 0) clearInterval(gameId)
+  if (lives <= 0) {
+    clearInterval(gameId)
+    window.alert('Game Over')
+  }
 }
 
 // GAME LOOP
