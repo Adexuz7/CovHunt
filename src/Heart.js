@@ -5,9 +5,7 @@ function Heart(left, id) {
   // Properties (propiedades)
   this.id = id
   this.left = left
-  this.num = 0
   this.html = 0
-  this.alive = true
 
   // Función que crea un nueva vida y lo añade al DOM
   this.create = function () {
