@@ -3,6 +3,12 @@ let enemies = []
 let gameId
 let enemiesId
 
+// Vida
+let lives = 3
+
+// Puntuacion
+let score = 0
+
 // Punto de inicio y márgenes de los enemigos
 let leftSpawn = -100
 let rightSpawn = 800
@@ -15,6 +21,12 @@ document.getElementById('canvas').addEventListener('click', function () {
 //
 let heart = new Heart()
 heart.create()
+let heart2 = new Heart(47)
+heart2.create()
+let heart3 = new Heart(47+42)
+heart3.create()
+
+
 
 
 
@@ -64,6 +76,7 @@ function killEnemy (e) {
   for (let i = 0; i < enemies.length; i++) {
     if (enemies[i].id === enemyIndex) {
       enemies[i].alive = false
+      score += 100
     }
   }
 }
@@ -82,6 +95,12 @@ function clearEnemies () {
     if (enemies[i].left > rightSpawn && enemies[i].direction === 1 ||
       enemies[i].left < leftSpawn && enemies[i].direction === -1 ||
       !enemies[i].alive) {
+
+      if (enemies[i].alive) {
+        lives--
+        console.log('Lives:', lives)
+      }
+
       enemies[i].html.parentNode.removeChild(enemies[i].html)
       enemies.splice(i, 1)
       i--
@@ -89,10 +108,15 @@ function clearEnemies () {
   }
 }
 
+function updateScore () {
+  document.getElementById('score').innerText = score
+}
+
 // GAME LOOP
 function animate () {
   moveEnemies()
   clearEnemies()
+  updateScore()
 }
 
 function startGame () {
