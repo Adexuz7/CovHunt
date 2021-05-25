@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +11,21 @@
   <script src="./src/Enemy.js" defer></script>
   <script src="./src/script.js" defer></script>
 </head>
+
 <body>
-  <div id="canvas">
-    <div id="lives">
-      <!-- <img src="./assets/heart.png" alt="" width="39" height="33"> -->
+  <div id="main-wrapper">
+    <div id="game-start">
+      <h1>Not Duck Hunt</h1>
+      <button id="btn-game-start">Start the game</button>
     </div>
-    <div id="points">
-      <span>Points:</span><span id="score">0</span>
+    <div id="canvas">
+      <div id="lives"></div>
+      <div id="points">
+        <span>Points:</span><span id="score">0</span>
+      </div>
     </div>
+    <div id="game-over"></div>
   </div>
 </body>
+
 </html>

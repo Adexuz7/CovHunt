@@ -4,8 +4,40 @@ body {
   background-size: cover;
 }
 
-#canvas {
+#main-wrapper {
   position: relative;
+  margin: 0 auto;
+  width: 810px;
+  height: 610px;
+}
+
+#game-start {
+  position: absolute;
+  background-color: greenyellow;
+  border: 5px solid black;
+  border-radius: 1%;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  cursor: url('../assets/cursor.png'), auto;
+  overflow: hidden;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+#game-start h1 {
+  font-size: 100px;
+}
+
+#game-start button {
+  width: 250px;
+  height: 50px;
+  font-size: x-large;
+}
+
+#canvas {
+  position: absolute;
   background-color: black;
   background-image: url('../assets/laboratory.jpg');
   border: 5px solid black;

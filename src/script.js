@@ -4,7 +4,7 @@ let gameId
 let enemiesId
 
 // Vida
-let lives = 10
+let lives = 5
 
 // Puntuacion
 let score = 0
@@ -12,6 +12,15 @@ let score = 0
 // Punto de inicio y márgenes de los enemigos
 let leftSpawn = -100
 let rightSpawn = 800
+
+// Start the game
+const gameStart = document.getElementById('game-start')
+const gameStartBtn = document.getElementById('btn-game-start')
+
+gameStartBtn.addEventListener('click', function () {
+  gameStart.style.display = 'none'
+  startGame()
+})
 
 // Comprobamos que el click funciona en el canvas
 document.getElementById('canvas').addEventListener('click', function () {
@@ -117,21 +126,22 @@ function updateScore() {
 function checkLives() {
   if (lives <= 0) {
     clearInterval(gameId)
+    clearInterval(enemiesId)
     // window.alert('Game Over')
   }
 }
 
 // GAME LOOP
-function animate() {
+function animate () {
   moveEnemies()
   clearEnemies()
   checkLives()
   updateScore()
 }
 
-function startGame() {
+function startGame () {
   gameId = setInterval(animate, 50)
   enemiesId = setInterval(createEnemy, 2000)
 }
 
-startGame()
+// startGame()
