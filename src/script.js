@@ -18,8 +18,8 @@ function createEnemy () {
 
   let direction = 0
   let position = 0
-
-  let enemyHeight = 0
+  let height = 0
+  let speed = 0
 
   if (random > 0.5) {
     direction = 1
@@ -29,10 +29,11 @@ function createEnemy () {
     position = rightSpawn
   }
 
-  enemyHeight = random * 400 + 50
+  height = random * 400 + 50
+  speed = random * 30 + 10
 
   // Llamamos al objeto Enemy y creamos uno nuevo
-  let enemy = new Enemy(position, direction, enemyHeight)
+  let enemy = new Enemy(position, direction, height, speed)
   if (enemies.length === 0) {
     enemy.create(-1)
   } else {
