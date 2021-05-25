@@ -1,9 +1,11 @@
 // Creamos un objeto con la plantilla base de Enemy
-function Enemy (left, direction) {
+function Enemy (left, direction, height) {
   var self = this
 
   // Properties (propiedades)
   this.left = left
+  this.top = height
+  this.speed = 10
   this.direction = direction
   this.html = 0
   this.id = -1
@@ -22,8 +24,9 @@ function Enemy (left, direction) {
   }
 
   this.move = function () {
-    self.left += 10 * self.direction
-    self.html.style.left = self.left + 'px'
+    self.left += self.speed * self.direction
+    self.html.style.left = self.left + 'px' // Distancia de la izquierda
+    self.html.style.top = self.top + 'px' // Distancia del margen superior
   }
 
   this.die = function () {

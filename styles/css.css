@@ -8,6 +8,7 @@
   height: 600px;
   margin: 0 auto;
   cursor: url('../assets/cursor.png'), auto;
+  overflow: hidden;
 }
 
 .enemy {
