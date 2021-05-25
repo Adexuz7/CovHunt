@@ -12,6 +12,17 @@ document.getElementById('canvas').addEventListener('click', function () {
   console.log('canvas')
 })
 
+//
+let heart = new Heart()
+heart.create()
+
+
+
+
+
+
+
+
 // Creamos enemigo en diferentes direcciones
 function createEnemy () {
   let random = Math.random()

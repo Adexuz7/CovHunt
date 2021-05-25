@@ -19,3 +19,22 @@
   width: 100px;
   height: 100px;
 }
+
+#lives {
+  border: 2px solid blueviolet;
+  position: absolute;
+  width: 400px;
+  height: 40px;
+  padding: 5px;
+}
+.heart{
+  position: absolute;
+  /*background-color: aqua;*/
+  background-image: url('../assets/heart.png');
+  background-repeat: no-repeat;
+  width: 39px;
+  height: 33px;
+  background-size:cover;
+  
+  
+}
