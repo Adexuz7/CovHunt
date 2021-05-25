@@ -4,7 +4,7 @@ let gameId
 let enemiesId
 
 // Vida
-let lives = 3
+let lives = 10
 
 // Puntuacion
 let score = 0
@@ -18,22 +18,23 @@ document.getElementById('canvas').addEventListener('click', function () {
   console.log('canvas')
 })
 
-//
-let heart = new Heart()
-heart.create()
-let heart2 = new Heart(47)
-heart2.create()
-let heart3 = new Heart(47+42)
-heart3.create()
+// Función que crea los corazones
+function createHearts () {
+  let position = 5
+  for (let i = 0; i < lives; i++) { // Posible error cuando cambia el valor de lives ???
+    let heart = new Heart(position, i + 1)
+    heart.create()
+    position += 45
+  }
+}
 
+createHearts()
 
-
-
-
-
-
-
-
+// Función que elimina los corazones
+function removeHearts () {
+  let heart = document.getElementById(`heart-${lives + 1}`)
+  heart.remove()
+}
 
 // Creamos enemigo en diferentes direcciones
 function createEnemy () {
@@ -60,7 +61,7 @@ function createEnemy () {
   if (enemies.length === 0) {
     enemy.create(-1)
   } else {
-    enemy.create(enemies[enemies.length-1].html.getAttribute('id'))
+    enemy.create(enemies[enemies.length - 1].html.getAttribute('id'))
   }
   // Evento click saca a enemigo
   enemy.html.addEventListener('click', killEnemy)
@@ -68,7 +69,7 @@ function createEnemy () {
 }
 
 //
-function killEnemy (e) {
+function killEnemy(e) {
   // Esta línea mágica hace que al hacer click solo se seleccione el primer elemento
   e.stopPropagation()
   // Eliminar del array sólo el elemento su id correcta
@@ -82,7 +83,7 @@ function killEnemy (e) {
 }
 
 // Movimiento de enemigos
-function moveEnemies () {
+function moveEnemies() {
   enemies.forEach(function (enemy, index) {
     if (enemy.alive) {
       enemy.move()
@@ -90,14 +91,15 @@ function moveEnemies () {
   })
 }
 
-function clearEnemies () {
+function clearEnemies() {
   for (let i = 0; i < enemies.length; i++) {
     if (enemies[i].left > rightSpawn && enemies[i].direction === 1 ||
       enemies[i].left < leftSpawn && enemies[i].direction === -1 ||
       !enemies[i].alive) {
 
-        if (enemies[i].alive) {
+      if (enemies[i].alive) {
         lives--
+        removeHearts()
         console.log('Lives:', lives)
       }
 
@@ -108,26 +110,26 @@ function clearEnemies () {
   }
 }
 
-function updateScore () {
+function updateScore() {
   document.getElementById('score').innerText = score
 }
 
-function checkLives () {
+function checkLives() {
   if (lives <= 0) {
     clearInterval(gameId)
-    window.alert('Game Over')
+    // window.alert('Game Over')
   }
 }
 
 // GAME LOOP
-function animate () {
+function animate() {
   moveEnemies()
   clearEnemies()
   checkLives()
   updateScore()
 }
 
-function startGame () {
+function startGame() {
   gameId = setInterval(animate, 50)
   enemiesId = setInterval(createEnemy, 2000)
 }

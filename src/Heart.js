@@ -1,8 +1,9 @@
 // Creamos un objeto con la plantilla base de Lives
-function Heart(left) {
+function Heart(left, id) {
   var self = this
 
   // Properties (propiedades)
+  this.id = id
   this.left = left
   this.num = 0
   this.html = 0
@@ -13,15 +14,13 @@ function Heart(left) {
     let lives = document.getElementById('lives')
     let heart = document.createElement('div')
     heart.classList.add('heart')
+    heart.setAttribute('id', `heart-${self.id}`)
     heart.style.left = self.left + 'px'
     lives.appendChild(heart)
-    self.html = document.getElementsByClassName('heart')[0]
+    self.html = document.getElementById(`heart-${self.id}`)
   }
 
-
-  
-
-  this.die = function () {
+  this.remove = function () {
     self.html.parentNode.removeChild(self.html)
   }
 }
