@@ -96,7 +96,7 @@ function clearEnemies () {
       enemies[i].left < leftSpawn && enemies[i].direction === -1 ||
       !enemies[i].alive) {
 
-      if (enemies[i].alive) {
+        if (enemies[i].alive) {
         lives--
         console.log('Lives:', lives)
       }
@@ -112,10 +112,15 @@ function updateScore () {
   document.getElementById('score').innerText = score
 }
 
+function checkLives () {
+  if (lives <= 0) clearInterval(gameId)
+}
+
 // GAME LOOP
 function animate () {
   moveEnemies()
   clearEnemies()
+  checkLives()
   updateScore()
 }
 
