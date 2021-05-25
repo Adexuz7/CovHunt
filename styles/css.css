@@ -1,91 +1,96 @@
 body {
   background-image: url('../assets/wallpaper.jpg');
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
 #main-wrapper {
-  position: relative;
-  margin: 0 auto;
   width: 810px;
   height: 610px;
+  position: relative;
+  margin: 0 auto;
+}
+
+#game-start, #canvas, #game-over {
+  width: 800px;
+  height: 600px;
+  display: block;
+  position: absolute;
+  margin: 0 auto;
+  border: 5px solid black;
+  border-radius: 1%;
+  text-align: center;
+  cursor: url('../assets/cursor.png'), auto;
 }
 
 #game-start {
-  position: absolute;
-  background-color: greenyellow;
-  border: 5px solid black;
-  border-radius: 1%;
-  width: 800px;
-  height: 600px;
-  margin: 0 auto;
-  cursor: url('../assets/cursor.png'), auto;
-  overflow: hidden;
   z-index: 1;
-  display: block;
-  text-align: center;
+  background-image: url('../assets/wallpaper.jpg');  
+  
 }
 
-#game-start h1 {
+#canvas {
+  overflow: hidden;
+  background-image: url('../assets/laboratory.jpg');
+}
+
+#game-over {
+  z-index: -1;
+  background-image: url('../assets/stay-home.jpg');
+}
+
+#game-start h1, #game-over h1 {
+  color: white;
   font-size: 100px;
+  margin-top: 150px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 #game-start button {
   width: 250px;
   height: 50px;
   font-size: x-large;
-}
-
-#canvas {
-  position: absolute;
-  background-color: black;
-  background-image: url('../assets/laboratory.jpg');
-  border: 5px solid black;
-  border-radius: 1%;
-  width: 800px;
-  height: 600px;
-  margin: 0 auto;
   cursor: url('../assets/cursor.png'), auto;
-  overflow: hidden;
 }
 
 .enemy {
-  position: absolute;
-  /*background-color: aqua;*/
-  background-image: url('../assets/corona.png');
-  border-radius: 5%;
   width: 100px;
   height: 100px;
+  position: absolute;
+  background-image: url('../assets/corona.png');
 }
 
 #lives {
-  background-color: blueviolet;
-  position: absolute;
   width: 390px;
-  height: 40px;
+  height: 36px;
   padding: 5px;
+  position: absolute;
 }
 
-.heart{
-  position: absolute;
-  /*background-color: aqua;*/
-  background-image: url('../assets/heart.png');
-  background-repeat: no-repeat;
+.heart {
   width: 39px;
   height: 33px;
+  position: absolute;
+  background-image: url('../assets/heart.png');
   background-size:cover;  
 }
 
-#points {
-  background-color: blue;
-  position: absolute;
+#score-container {
   width: 390px;
-  height: 40px;
+  height: 36px;
+  position: absolute;
   left: 400px;
   padding: 5px;
 
   /* Text Style */
   color: white;
   font-weight: bold;
+  text-align: right;
   font-size: 25px;
+}
+
+#score-container > #score {
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
