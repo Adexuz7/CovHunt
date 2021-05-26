@@ -11,13 +11,10 @@ header{
 }
 
 html, body {
-  /* background-image: url('../assets/img/main-Background.jpg'); */
   background-image: radial-gradient(circle, #000000, #030302, #050505, #080807, #0a0a0a, #0b0b0d, #0b0d0f, #0a0e11, #040f12, #001110, #00110a, #041101);
-  background-repeat: no-repeat;
   background-size: cover;
   font-family: 'DotGothic16', sans-serif;
   height: 100%;
-
 }
 
 #main-wrapper {
@@ -25,8 +22,6 @@ html, body {
   height: 610px;
   position: relative;
   background-color: black;
-  /* background-image: url('../assets/img/hospital.png'); */
-  background-repeat: no-repeat;
   background-size: cover;
   border: 5px solid black;
   border-radius: 1%;
@@ -59,10 +54,9 @@ html, body {
   border: 5px solid black;
   border-radius: 1%;
   text-align: center;
-  cursor: url('../assets/img/pgota2.png'), auto;
+  cursor: url('../assets/img/punterogota.png'), auto;
   overflow: hidden;
   background-image: url('../assets/img/hospital.png');
-  background-repeat: no-repeat;
   background-size: cover;
   z-index: 2;
 }
@@ -80,26 +74,33 @@ html, body {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-#game-start button {
+#btn-game-start, #btn-play-again {
   width: 500px;
   height: 100px;
   cursor: url('../assets/img/punteroGrey.png'), auto;
-  /* background-color: hsl(60, 100%, 50%, 1); */
-  background-color: transparent;
   border-style: none;
   border-radius: 15px;
-  padding: 10px;
   color:white;
-  font-size: 45px;
   font-family: 'DotGothic16', sans-serif;
+  font-size: 45px;
+  padding: 10px;
+}
+
+#btn-game-start {
+  background-color: transparent;
   margin-top: 400px;
 }
 
-#game-start button:hover {
+#btn-play-again {
+  background-color: black;
+  margin-top: 100px;
+}
+
+#btn-game-start :hover, #btn-play-again :hover {
   color: hsl(60, 100%, 50%, 1);
 }
 
-#game-start button .hazard-symbol {
+.hazard-symbol {
   color: red;
 }
 
