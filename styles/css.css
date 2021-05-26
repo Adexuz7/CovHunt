@@ -1,33 +1,50 @@
+h1{
+  font-size: 100px;
+  margin: 0;
+}
+
+header{
+  color: white;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
 body {
-  background-image: url('../assets/wallpaper.jpg');
+  /* background-image: url('../assets/img/main-Background.jpg'); */
+  background-image: radial-gradient(circle, #000000, #030302, #050505, #080807, #0a0a0a, #0b0b0d, #0b0d0f, #0a0e11, #040f12, #001110, #00110a, #041101);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'DotGothic16', sans-serif;
 }
 
 #canvas {
   position: relative;
   background-color: black;
-  background-image: url('../assets/laboratory.jpg');
+  background-image: url('../assets/img/hospital.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 5px solid black;
   border-radius: 1%;
   width: 800px;
   height: 600px;
   margin: 0 auto;
-  cursor: url('../assets/cursor.png'), auto;
+  cursor: url('../assets/img/cursor.png'), auto;
   overflow: hidden;
 }
 
 .enemy {
   position: absolute;
-  /*background-color: aqua;*/
-  background-image: url('../assets/corona.png');
+  background-image: url('../assets/img/enemy.gif');
+  background-size: cover;
   border-radius: 5%;
   width: 100px;
   height: 100px;
+  z-index: 300;
 }
 
 #lives {
-  background-color: blueviolet;
+
   position: absolute;
   width: 390px;
   height: 40px;
@@ -36,24 +53,23 @@ body {
 
 .heart{
   position: absolute;
-  /*background-color: aqua;*/
-  background-image: url('../assets/heart.png');
+  background-image: url('../assets/img/Live.png');
   background-repeat: no-repeat;
-  width: 39px;
-  height: 33px;
-  background-size:cover;  
+  width: 40px;
+  height: 40px;
+  background-size:cover;
 }
 
 #points {
-  background-color: blue;
+
   position: absolute;
   width: 390px;
   height: 40px;
-  left: 400px;
-  padding: 5px;
+  left: 500px;
+  padding: 6px;
 
   /* Text Style */
   color: white;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
 }

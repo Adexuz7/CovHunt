@@ -4,7 +4,7 @@ let gameId
 let enemiesId
 
 // Vida
-let lives = 10
+let lives = 5
 
 // Puntuacion
 let score = 0
@@ -117,6 +117,7 @@ function updateScore() {
 function checkLives() {
   if (lives <= 0) {
     clearInterval(gameId)
+    clearInterval(enemiesId)
     // window.alert('Game Over')
   }
 }
