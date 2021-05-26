@@ -39,7 +39,7 @@ gameStartBtn.addEventListener('click', function () {
   startGame()
 })
 
-// El botón "play again"
+// El botón "play again" reinicia la partida
 playAgainBtn.addEventListener('click', function () {
   resetGame()
 })
@@ -136,6 +136,15 @@ function clearEnemies () {
   }
 }
 
+// Función que elimina a todos los enemigos
+function resetEnemies () {
+  for (let i = 0; i < enemies.length; i++) {
+    enemies[i].html.parentNode.removeChild(enemies[i].html)
+    enemies.splice(i, 1)
+    i--
+  }
+}
+
 function updateScore () {
   document.getElementById('score').innerText = 'Score: ' + score
 }
@@ -164,14 +173,8 @@ function startGame () {
 function resetGame () {
   lives = startingLives // Reinia las vidas
   score = startingScore // Reinicia la puntuación
-  // Limpia los enemigos que pudieran haber quedado en pantalla
-  for (let i = 0; i < enemies.length; i++) {
-    enemies[i].html.parentNode.removeChild(enemies[i].html)
-    enemies.splice(i, 1)
-    i--
-  }
-  // Inica el juego
-  startGame()
+  resetEnemies() // Limpia los enemigos que pudieran haber quedado en pantalla
+  startGame() // Inica el juego
 }
 
 function gameOver () {
