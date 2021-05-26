@@ -10,35 +10,44 @@ let lives = 5
 let score = 0
 
 // Punto de inicio y márgenes de los enemigos
-let leftSpawn = -100
-let rightSpawn = 800
+const leftSpawn = -100
+const rightSpawn = 800
+
+// El botón "Start the game" inicia la partida
+const gameStart = document.getElementById('game-start')
+const gameStartBtn = document.getElementById('btn-game-start')
+
+gameStartBtn.addEventListener('click', function () {
+  gameStart.style.display = 'none'
+  startGame()
+})
 
 // Comprobamos que el click funciona en el canvas
 document.getElementById('canvas').addEventListener('click', function () {
-  console.log('canvas')
+  console.log('Has fallado!')
 })
 
 // Función que crea los corazones
 function createHearts () {
   let position = 5
-  for (let i = 0; i < lives; i++) { // Posible error cuando cambia el valor de lives ???
-    let heart = new Heart(position, i + 1)
+  const spacing = 45
+
+  for (let i = 0; i < lives; i++) {
+    const heart = new Heart(position, i + 1)
     heart.create()
-    position += 45
+    position += spacing
   }
 }
 
-createHearts()
-
 // Función que elimina los corazones
 function removeHearts () {
-  let heart = document.getElementById(`heart-${lives + 1}`)
+  const heart = document.getElementById(`heart-${lives + 1}`)
   heart.remove()
 }
 
 // Creamos enemigo en diferentes direcciones
 function createEnemy () {
-  let random = Math.random()
+  const random = Math.random()
 
   let direction = 0
   let position = 0
@@ -57,7 +66,7 @@ function createEnemy () {
   speed = random * 10 + 10
 
   // Llamamos al objeto Enemy y creamos uno nuevo
-  let enemy = new Enemy(position, direction, height, speed)
+  const enemy = new Enemy(position, direction, height, speed)
   if (enemies.length === 0) {
     enemy.create(-1)
   } else {
@@ -69,11 +78,11 @@ function createEnemy () {
 }
 
 //
-function killEnemy(e) {
+function killEnemy (e) {
   // Esta línea mágica hace que al hacer click solo se seleccione el primer elemento
   e.stopPropagation()
   // Eliminar del array sólo el elemento su id correcta
-  let enemyIndex = parseInt(e.currentTarget.getAttribute('id'))
+  const enemyIndex = parseInt(e.currentTarget.getAttribute('id'))
   for (let i = 0; i < enemies.length; i++) {
     if (enemies[i].id === enemyIndex) {
       enemies[i].alive = false
@@ -83,7 +92,7 @@ function killEnemy(e) {
 }
 
 // Movimiento de enemigos
-function moveEnemies() {
+function moveEnemies () {
   enemies.forEach(function (enemy, index) {
     if (enemy.alive) {
       enemy.move()
@@ -91,7 +100,7 @@ function moveEnemies() {
   })
 }
 
-function clearEnemies() {
+function clearEnemies () {
   for (let i = 0; i < enemies.length; i++) {
     if (enemies[i].left > rightSpawn && enemies[i].direction === 1 ||
       enemies[i].left < leftSpawn && enemies[i].direction === -1 ||
@@ -110,29 +119,31 @@ function clearEnemies() {
   }
 }
 
-function updateScore() {
-  document.getElementById('score').innerText = score
+function updateScore () {
+  document.getElementById('score').innerText = 'Score: ' + score
 }
 
-function checkLives() {
-  if (lives <= 0) {
-    clearInterval(gameId)
-    clearInterval(enemiesId)
-    // window.alert('Game Over')
-  }
+function checkLives () {
+  if (lives <= 0) gameOver()
 }
 
 // GAME LOOP
-function animate() {
+function animate () {
   moveEnemies()
   clearEnemies()
   checkLives()
   updateScore()
 }
 
-function startGame() {
+function startGame () {
+  createHearts()
   gameId = setInterval(animate, 50)
   enemiesId = setInterval(createEnemy, 2000)
 }
 
-startGame()
+function gameOver () {
+  const canvas = document.getElementById('canvas')
+  canvas.style.display = 'none'
+  clearInterval(gameId)
+  clearInterval(enemiesId)
+}
