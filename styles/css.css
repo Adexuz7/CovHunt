@@ -47,8 +47,7 @@ html, body {
 
 #game-start {
   z-index: 3;
-  background-image: url('../assets/img/mainMenu.jpg');
-
+  background-image: url('../assets/img/mainMenu2.png');
 }
 
 #canvas {
@@ -72,10 +71,26 @@ html, body {
 }
 
 #game-start button {
-  width: 250px;
-  height: 50px;
-  font-size: x-large;
+  width: 500px;
+  height: 100px;
   cursor: url('../assets/img/cursor.png'), auto;
+  /* background-color: hsl(60, 100%, 50%, 1); */
+  background-color: transparent;
+  border-style: none;
+  border-radius: 15px;
+  padding: 10px;
+  color:white;
+  font-size: 45px;
+  font-family: 'DotGothic16', sans-serif;
+  margin-top: 400px;
+}
+
+#game-start button:hover {
+  color: hsl(60, 100%, 50%, 1);
+}
+
+#game-start button .hazard-symbol {
+  color: red;
 }
 
 .enemy {
