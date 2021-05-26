@@ -33,7 +33,7 @@ html, body {
   margin: 0 auto;
 }
 
-#game-start, #canvas, #game-over {
+#game-start,  #game-over {
   width: 800px;
   height: 600px;
   display: block;
@@ -42,7 +42,7 @@ html, body {
   border: 5px solid black;
   border-radius: 1%;
   text-align: center;
-  cursor: url('../assets/img/cursor.png'), auto;
+  cursor: url('../assets/img/punteroGrey.png'), auto;
 }
 
 #game-start {
@@ -51,6 +51,15 @@ html, body {
 }
 
 #canvas {
+  width: 800px;
+  height: 600px;
+  display: block;
+  position: absolute;
+  margin: 0 auto;
+  border: 5px solid black;
+  border-radius: 1%;
+  text-align: center;
+  cursor: url('../assets/img/pgota2.png'), auto;
   overflow: hidden;
   background-image: url('../assets/img/hospital.png');
   background-repeat: no-repeat;
@@ -60,7 +69,8 @@ html, body {
 
 #game-over {
   z-index: 1;
-  background-image: url('../assets/img/gameOver.jpg');
+  background-image: url('../assets/img/startGame.gif');
+  background-size: cover;
 }
 
 #game-start h1, #game-over h1 {
@@ -73,7 +83,7 @@ html, body {
 #game-start button {
   width: 500px;
   height: 100px;
-  cursor: url('../assets/img/cursor.png'), auto;
+  cursor: url('../assets/img/punteroGrey.png'), auto;
   /* background-color: hsl(60, 100%, 50%, 1); */
   background-color: transparent;
   border-style: none;
@@ -93,6 +103,24 @@ html, body {
   color: red;
 }
 
+
+@-webkit-keyframes enemy /* Safari and Chrome */ {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
 .enemy {
   position: absolute;
   background-image: url('../assets/img/enemy.gif');
@@ -100,7 +128,7 @@ html, body {
   border-radius: 5%;
   width: 100px;
   height: 100px;
-
+  animation: enemy 12s linear infinite;
 }
 
 #lives {
