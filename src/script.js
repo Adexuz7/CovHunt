@@ -1,30 +1,47 @@
-// Creamos una array vacía para almacenar a los enemigos
-let enemies = []
-let gameId
-let enemiesId
-
-// Vida
-let lives = 5
-
-// Puntuacion
-let score = 0
+/* Parámetros del juego */
 
 // Punto de inicio y márgenes de los enemigos
 const leftSpawn = -100
 const rightSpawn = 800
 
-// El botón "Start the game" inicia la partida
+// Vidas y puntuación iniciales
+const startingLives = 5
+const startingScore = 0
+
+// Intervalos para el juego y los enemigos
+const gameInterval = 50
+const enemiesInterval = 2000
+
+/* --- */
+
+// Creamos una array vacía para almacenar a los enemigos
+const enemies = []
+let gameId
+let enemiesId
+
+// Vida y puntuación
+let lives = startingLives
+let score = startingScore
+
+// Elementos del DOM
+const canvas = document.getElementById('canvas')
 const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
+const playAgainBtn = document.getElementById('btn-play-again')
 
+// Comprobamos que el click funciona en el canvas
+canvas.addEventListener('click', function () {
+  console.log('Has fallado!')
+})
+
+// El botón "Start the game" inicia la partida
 gameStartBtn.addEventListener('click', function () {
-  gameStart.style.display = 'none'
   startGame()
 })
 
-// Comprobamos que el click funciona en el canvas
-document.getElementById('canvas').addEventListener('click', function () {
-  console.log('Has fallado!')
+// El botón "play again"
+playAgainBtn.addEventListener('click', function () {
+  resetGame()
 })
 
 // Función que crea los corazones
@@ -136,13 +153,28 @@ function animate () {
 }
 
 function startGame () {
+  canvas.style.display = 'initial' // Hace el canvas visible (necesario al reiniciar la partida)
+  gameStart.style.display = 'none' // Oculta la portada del juego
   createHearts()
-  gameId = setInterval(animate, 50)
-  enemiesId = setInterval(createEnemy, 2000)
+  gameId = setInterval(animate, gameInterval)
+  enemiesId = setInterval(createEnemy, enemiesInterval)
+}
+
+// Función que reinicia el juego
+function resetGame () {
+  lives = startingLives // Reinia las vidas
+  score = startingScore // Reinicia la puntuación
+  // Limpia los enemigos que pudieran haber quedado en pantalla
+  for (let i = 0; i < enemies.length; i++) {
+    enemies[i].html.parentNode.removeChild(enemies[i].html)
+    enemies.splice(i, 1)
+    i--
+  }
+  // Inica el juego
+  startGame()
 }
 
 function gameOver () {
-  const canvas = document.getElementById('canvas')
   canvas.style.display = 'none'
   clearInterval(gameId)
   clearInterval(enemiesId)
