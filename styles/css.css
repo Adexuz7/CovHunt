@@ -1,6 +1,7 @@
 h1{
   font-size: 100px;
   margin: 0;
+  user-select: none;
 }
 
 header{
@@ -15,7 +16,10 @@ html, body {
   background-size: cover;
   font-family: 'DotGothic16', sans-serif;
   height: 100%;
+  margin: 0;
 }
+
+
 
 #main-wrapper {
   width: 810px;
@@ -92,11 +96,13 @@ html, body {
 }
 
 #btn-play-again {
+  /* background-color: transparent; */
   background-color: black;
   margin-top: 100px;
+
 }
 
-#btn-game-start :hover, #btn-play-again :hover {
+#btn-game-start:hover, #btn-play-again:hover {
   color: hsl(60, 100%, 50%, 1);
 }
 
@@ -155,6 +161,7 @@ html, body {
   height: 40px;
   left: 500px;
   padding: 6px;
+  user-select: none;
 }
 
 #score-container {
@@ -169,6 +176,7 @@ html, body {
   font-weight: bold;
   font-size: 30px;
   text-align: right;
+  user-select: none;
 }
 
 #score-container > #score {
