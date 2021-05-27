@@ -136,6 +136,7 @@ html, body {
     transform: rotate(-360deg);
   }
 }
+
 .enemy {
   position: absolute;
   background-image: url('../assets/img/enemy.gif');
@@ -143,8 +144,8 @@ html, body {
   background-size: 100px 100px;
   background-repeat: no-repeat;
   border-radius: 100%;
-  width: 120px;
-  height: 120px;
+  width: 115px;
+  height: 115px;
   animation: enemy 12s linear infinite;
 }
 
