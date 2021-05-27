@@ -25,6 +25,7 @@ let score = startingScore
 
 // Elementos del DOM
 const canvas = document.getElementById('canvas')
+const audio = document.getElementsByTagName('audio')[0]
 const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
 const playAgainBtn = document.getElementById('btn-play-again')
@@ -164,6 +165,7 @@ function animate () {
 function startGame () {
   canvas.style.display = 'initial' // Hace el canvas visible (necesario al reiniciar la partida)
   gameStart.style.display = 'none' // Oculta la portada del juego
+  audio.play()
   createHearts()
   gameId = setInterval(animate, gameInterval)
   enemiesId = setInterval(createEnemy, enemiesInterval)
@@ -179,6 +181,7 @@ function resetGame () {
 
 function gameOver () {
   canvas.style.display = 'none'
+  // audio.pause()
   clearInterval(gameId)
   clearInterval(enemiesId)
 }
