@@ -40,13 +40,15 @@ canvas.addEventListener('click', function () {
 // Botón que inicia la partida
 gameStartBtn.addEventListener('click', function () {
   button.play()
-  setTimeout(startGame, 1000)
+  startGame()
+  //setTimeout(startGame, 1000)
 })
 
 // Botón que reinicia la partida
 playAgainBtn.addEventListener('click', function () {
   button.play()
-  setTimeout(resetGame, 1000)
+  resetGame()
+  //setTimeout(resetGame, 1000)
 })
 
 // Dibuja los corazones
