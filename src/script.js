@@ -27,6 +27,8 @@ let score = startingScore
 const canvas = document.getElementById('canvas')
 const audio = document.getElementsByTagName('audio')[0]
 const cursor = document.getElementById('cursor')
+const life = document.getElementById('life')
+const button = document.getElementById('button')
 const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
 const playAgainBtn = document.getElementById('btn-play-again')
@@ -38,12 +40,14 @@ canvas.addEventListener('click', function () {
 
 // El botón "Start the game" inicia la partida
 gameStartBtn.addEventListener('click', function () {
-  startGame()
+  button.play()
+  setTimeout(startGame, 1000)
 })
 
 // El botón "play again" reinicia la partida
 playAgainBtn.addEventListener('click', function () {
-  resetGame()
+  button.play()
+  setTimeout(resetGame, 1000)
 })
 
 // Función que crea los corazones
@@ -61,6 +65,7 @@ function createHearts () {
 // Función que elimina los corazones
 function removeHearts () {
   const heart = document.getElementById(`heart-${lives + 1}`)
+  life.play()
   heart.remove()
 }
 
