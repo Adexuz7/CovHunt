@@ -26,6 +26,7 @@ let score = startingScore
 // Elementos del DOM
 const canvas = document.getElementById('canvas')
 const audio = document.getElementsByTagName('audio')[0]
+const cursor = document.getElementById('cursor')
 const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
 const playAgainBtn = document.getElementById('btn-play-again')
@@ -105,6 +106,8 @@ function killEnemy (e) {
     if (enemies[i].id === enemyIndex) {
       enemies[i].alive = false
       score += 100
+      cursor.play()
+      console.log(cursor + 'kill')
     }
   }
 }
@@ -181,7 +184,7 @@ function resetGame () {
 
 function gameOver () {
   canvas.style.display = 'none'
-  // audio.pause()
+  audio.pause()
   clearInterval(gameId)
   clearInterval(enemiesId)
 }
