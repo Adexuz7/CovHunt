@@ -1,8 +1,8 @@
 /* Parámetros del juego */
 
 // Punto de aparición y huida de los enemigos
-const leftSpawn = -100
-const rightSpawn = 800
+const leftSpawn = -125
+const rightSpawn = 815
 
 // Vidas y puntuación iniciales
 const startingLives = 4
@@ -81,7 +81,7 @@ function createEnemy () {
     position = rightSpawn
   }
 
-  height = random * 400 + 50
+  height = random * 280 + 100
   speed = random * 5 + 10
 
   const enemy = new Enemy(position, direction, height, speed)
