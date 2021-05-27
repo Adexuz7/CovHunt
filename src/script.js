@@ -40,12 +40,14 @@ canvas.addEventListener('click', function () {
 // Botón que inicia la partida
 gameStartBtn.addEventListener('click', function () {
   button.play()
+  gameStartBtn.setAttribute('disabled', 'disabled')
   setTimeout(startGame, 1000)
 })
 
 // Botón que reinicia la partida
 playAgainBtn.addEventListener('click', function () {
   button.play()
+  playAgainBtn.setAttribute('disabled', 'disabled')
   setTimeout(resetGame, 1000)
 })
 
@@ -177,10 +179,12 @@ function startGame () {
 
 // Reiniciar la partida
 function resetGame () {
+  playAgainBtn.removeAttribute('disabled')
   lives = startingLives // Reiniciar vidas
-  score = startingScore // Reiniciar puntuación
-  resetEnemies() // Reiniciar enemigos
-  startGame() // Empezar la partida
+  score = startingScore // Reiniciar la puntuación
+  document.getElementById('score').innerText = 'Score: ' + score
+  resetEnemies()
+  startGame()
 }
 
 // Terminar la partida
