@@ -20,6 +20,15 @@ html, body {
 }
 
 
+.blink_me {
+  animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 
 #main-wrapper {
   width: 810px;
@@ -96,9 +105,8 @@ html, body {
 }
 
 #btn-play-again {
-  /* background-color: transparent; */
   background-color: black;
-  margin-top: 100px;
+  margin-top: 50px;
 
 }
 
@@ -131,10 +139,12 @@ html, body {
 .enemy {
   position: absolute;
   background-image: url('../assets/img/enemy.gif');
-  background-size: cover;
-  border-radius: 5%;
-  width: 100px;
-  height: 100px;
+  background-position: center;
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  width: 120px;
+  height: 120px;
   animation: enemy 12s linear infinite;
 }
 

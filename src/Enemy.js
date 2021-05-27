@@ -6,8 +6,12 @@ function Enemy (left, direction, height, speed) {
   this.left = left
   this.direction = direction
   this.top = height
+  this.topMax = height - 100
+  this.topMin = height + 100
   this.speed = speed
   this.id = 0
+  this.direction = direction
+  this.verticalDirection = 1
   this.html = 0
   this.alive = true
 
@@ -27,6 +31,10 @@ function Enemy (left, direction, height, speed) {
     self.left += self.speed * self.direction
     self.html.style.left = self.left + 'px' // Distancia de la izquierda
     self.html.style.top = self.top + 'px' // Distancia del margen superior
+    self.top += self.speed * self.verticalDirection
+    if (self.top <= self.topMax || self.top >= self.topMin) {
+      self.verticalDirection *= -1
+    }
   }
 
   this.die = function () {

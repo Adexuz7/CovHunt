@@ -24,6 +24,8 @@ let gameId, enemiesId
 
 // Obtener elementos del DOM
 const canvas = document.getElementById('canvas')
+const audio = document.getElementsByTagName('audio')[0]
+const cursor = document.getElementById('cursor')
 const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
 const playAgainBtn = document.getElementById('btn-play-again')
@@ -80,7 +82,7 @@ function createEnemy () {
   }
 
   height = random * 400 + 50
-  speed = random * 10 + 10
+  speed = random * 5 + 10
 
   const enemy = new Enemy(position, direction, height, speed)
 
@@ -103,6 +105,7 @@ function killEnemy (e) {
   for (let i = 0; i < enemies.length; i++) {
     if (enemies[i].id === enemyIndex) {
       enemies[i].alive = false
+      cursor.play()
       updateScore()
     }
   }
@@ -161,9 +164,10 @@ function gameLoop () {
 function startGame () {
   canvas.style.display = 'initial' // Asegurar la visibilidad del canvas
   gameStart.style.display = 'none' // Ocultar portada del juego
-  createHearts() // Dibujar el indicador de corazones
-  gameId = setInterval(gameLoop, gameInterval) // Iniciar el intervalo de juego
-  enemiesId = setInterval(createEnemy, enemiesInterval) // Iniciar el intervalo de creación de enemigos
+  audio.play()
+  createHearts()
+  gameId = setInterval(gameLoop, gameInterval)
+  enemiesId = setInterval(createEnemy, enemiesInterval)
 }
 
 // Reiniciar la partida
@@ -176,7 +180,8 @@ function resetGame () {
 
 // Terminar la partida
 function gameOver () {
-  canvas.style.display = 'none' // Ocultar canvas para ver la pantalla de game over
-  clearInterval(enemiesId) // Parar intervalo de creación de enemigos
-  clearInterval(gameId) // Parar intervalo de juego
+  canvas.style.display = 'none'
+  audio.pause()
+  clearInterval(enemiesId)
+  clearInterval(gameId)
 }
