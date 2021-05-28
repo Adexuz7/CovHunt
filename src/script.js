@@ -8,6 +8,9 @@ const rightSpawn = 815
 const startingLives = 4
 const startingScore = 0
 
+// Velocidad de los enemigos
+const startingEnemySpeed = 5
+
 // Incremento en la puntuación cada vez que matamos a un enemigo
 const scoreIncrement = 100
 
@@ -20,6 +23,7 @@ const enemiesInterval = 1200
 const enemies = [] // Enemigos en pantalla
 let lives = startingLives
 let score = startingScore
+let enemySpeed = startingEnemySpeed
 let gameId, enemiesId
 
 // Obtener elementos del DOM
@@ -42,14 +46,14 @@ canvas.addEventListener('click', function () {
 gameStartBtn.addEventListener('click', function () {
   button.play()
   gameStartBtn.setAttribute('disabled', 'disabled')
-  setTimeout(startGame, 1000)
+  setTimeout(startGame, 600)
 })
 
 // Botón que reinicia la partida
 playAgainBtn.addEventListener('click', function () {
   button.play()
   playAgainBtn.setAttribute('disabled', 'disabled')
-  setTimeout(resetGame, 1000)
+  setTimeout(resetGame, 600)
 })
 
 // Dibuja los corazones
@@ -90,7 +94,8 @@ function createEnemy () {
   }
 
   height = random * 280 + 100
-  speed = random * 5 + 10
+  // speed = random * 5 + 10
+  speed = random * enemySpeed + 10
 
   const enemy = new Enemy(position, direction, height, speed)
 
@@ -160,6 +165,21 @@ function checkLives () {
 function updateScore () {
   score += scoreIncrement
   document.getElementById('score').innerText = 'Score: ' + score
+
+  // ¿Alguien dijo niveles? :D
+  switch (score) {
+    case 600:
+      enemySpeed = 6
+      console.log('Speed level 2')
+      break
+    case 1800:
+      enemySpeed = 10
+      console.log('Speed level 3')
+      break
+    case 3000:
+      enemySpeed = 15
+      console.log('Max speed')
+  }
 }
 
 function gameLoop () {
@@ -183,6 +203,7 @@ function resetGame () {
   playAgainBtn.removeAttribute('disabled')
   lives = startingLives // Reiniciar vidas
   score = startingScore // Reiniciar la puntuación
+  enemySpeed = startingEnemySpeed // Reiniciar la velocidad de los enemigos
   document.getElementById('score').innerText = 'Score: ' + score
   resetEnemies()
   startGame()
