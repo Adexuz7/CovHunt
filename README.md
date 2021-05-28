@@ -1,7 +1,7 @@
-# DuckHunt (?)
+# CovHunt
 ¡Acaba con la pandemia!... Antes de que ella acabe contigo...
 
-![](screenshots/v1.png)
+![](screenshots/CovHunt.png)
 
 Autores:
 - Andrés Galván
