@@ -5,7 +5,7 @@ const leftSpawn = -125
 const rightSpawn = 815
 
 // Vidas y puntuación iniciales
-const startingLives = 4
+const startingLives = 5
 const startingScore = 0
 
 // Velocidad de los enemigos
