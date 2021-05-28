@@ -25,6 +25,7 @@ let lives = startingLives
 let score = startingScore
 let enemySpeed = startingEnemySpeed
 let gameId, enemiesId
+let level = 1
 
 // Obtener elementos del DOM
 const canvas = document.getElementById('canvas')
@@ -36,6 +37,22 @@ const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
 const gameOverScore = document.getElementById('game-over-score')
 const playAgainBtn = document.getElementById('btn-play-again')
+
+// PAUSA (BUG)
+// let pause = false
+// window.addEventListener('keydown', function (e) {
+//   if (e.code === 'KeyP' && !pause) {
+//     console.log(pause)
+//     pause = true
+//     clearInterval(enemiesId)
+//     clearInterval(gameId)
+//   } else if (e.code === 'KeyP' && pause) {
+//     console.log(pause)
+//     pause = false
+//     gameId = setInterval(gameLoop, gameInterval)
+//     enemiesId = setInterval(createEnemy, enemiesInterval)
+//   }
+// })
 
 // El jugador falla el disparo (click en el canvas)
 canvas.addEventListener('click', function () {
@@ -165,21 +182,24 @@ function checkLives () {
 function updateScore () {
   score += scoreIncrement
   document.getElementById('score').innerText = 'Score: ' + score
+  document.getElementById('level').innerText = 'Level: ' + level
 
   // ¿Alguien dijo niveles? :D
   switch (score) {
     case 600:
+      level = 2
       enemySpeed = 6
-      console.log('Speed level 2')
       break
     case 1800:
+      level = 3
       enemySpeed = 10
-      console.log('Speed level 3')
       break
     case 3000:
+      level = 4
       enemySpeed = 15
-      console.log('Max speed')
   }
+
+  console.log('LEVEL:', level)
 }
 
 function gameLoop () {
