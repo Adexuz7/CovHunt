@@ -30,6 +30,7 @@ const life = document.getElementById('life')
 const button = document.getElementById('button')
 const gameStart = document.getElementById('game-start')
 const gameStartBtn = document.getElementById('btn-game-start')
+const gameOverScore = document.getElementById('game-over-score')
 const playAgainBtn = document.getElementById('btn-play-again')
 
 // El jugador falla el disparo (click en el canvas)
@@ -193,4 +194,5 @@ function gameOver () {
   audio.pause()
   clearInterval(enemiesId)
   clearInterval(gameId)
+  gameOverScore.innerText = 'Score: ' + score
 }
