@@ -16,7 +16,7 @@ const scoreIncrement = 100
 
 // Intervalos para el juego y la creación de enemigos
 const gameInterval = 50
-const enemiesInterval = 1200
+const enemiesInterval = 1500
 
 /* --- */
 
