@@ -7,6 +7,7 @@ const rightSpawn = 815
 // Vidas y puntuación iniciales
 const startingLives = 5
 const startingScore = 0
+const startingLevel = 1 // Nivel inicial
 
 // Velocidad de los enemigos
 const startingEnemySpeed = 5
@@ -25,7 +26,7 @@ let lives = startingLives
 let score = startingScore
 let enemySpeed = startingEnemySpeed
 let gameId, enemiesId
-let level = 1
+let level = startingLevel
 
 // Obtener elementos del DOM
 const canvas = document.getElementById('canvas')
@@ -223,6 +224,7 @@ function resetGame () {
   playAgainBtn.removeAttribute('disabled')
   lives = startingLives // Reiniciar vidas
   score = startingScore // Reiniciar la puntuación
+  level = startingLevel // Reiniciar nivel
   enemySpeed = startingEnemySpeed // Reiniciar la velocidad de los enemigos
   document.getElementById('score').innerText = 'Score: ' + score
   resetEnemies()
