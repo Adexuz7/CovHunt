@@ -16,7 +16,7 @@ const startingEnemySpeed = 5
 const scoreIncrement = 100
 
 // Intervalos para el juego y la creación de enemigos
-const gameInterval = 50
+const gameInterval = 150
 const enemiesInterval = 1500
 
 /* --- */
@@ -203,18 +203,25 @@ function updateScore () {
   console.log('LEVEL:', level)
 }
 
+var lastFrameTimeMs = 0, // The last time the loop was run
+  maxFPS = 10; // The maximum FPS we want to allow
+
 function gameLoop () {
+  //createEnemy()
   moveEnemies()
   clearEnemies()
   checkLives()
-}
 
+
+  window.requestAnimationFrame(gameLoop)
+}
 // Iniciar la partida
 function startGame () {
   canvas.style.display = 'initial' // Asegurar la visibilidad del canvas
   gameStart.style.display = 'none' // Ocultar portada del juego
   audio.play()
   createHearts()
+  window.requestAnimationFrame(gameLoop)
   gameId = setInterval(gameLoop, gameInterval)
   enemiesId = setInterval(createEnemy, enemiesInterval)
 }

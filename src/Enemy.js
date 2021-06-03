@@ -3,12 +3,26 @@ function Enemy (left, direction, height, speed) {
   const self = this
 
   // Properties (propiedades)
+  // this.left = left
+  // this.direction = direction
+  // this.top = height
+  // this.topMax = height - 100
+  // this.topMin = height + 100
+  // this.speed = speed
+  // this.id = 0
+  // this.direction = direction
+  // this.verticalDirection = 1
+  // this.html = 0
+  // this.alive = true
+
+  // Testing properties
   this.left = left
   this.direction = direction
   this.top = height
   this.topMax = height - 100
   this.topMin = height + 100
-  this.speed = speed
+  this.speed = 0.1
+  this.limit = 300
   this.id = 0
   this.direction = direction
   this.verticalDirection = 1
